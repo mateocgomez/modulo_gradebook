@@ -28,7 +28,31 @@ namespace Grades
       
             public GradeStatistics ComputeStatistcs()
         {
-            return new GradeStatistics(); 
+            GradeStatistics stats = new GradeStatistics();
+
+            float sum = 0;
+
+            //generamos un loop para que vaya a cada score y me realice el calculo respectivo almacenandolo en una variable
+
+            foreach(float grade in grades)
+            {
+
+                //Siempre es bueno usar las librerias que proporciona el lenguaje con el cual se vaya a desarrollar como codigo limpio
+
+                stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
+                stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
+
+                sum = sum + grade;
+
+            }
+
+            //Count me permite saber 
+
+            stats.AverageGrade = sum / grades.Count;
+
+            //devolvemos la variable stats la cual contendra las estadisticas
+            return stats;
+
         }
 
         //AddGrade es una metodo de la clase GradeBook
